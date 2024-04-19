@@ -1,0 +1,212 @@
+
+@font-face {
+    font-family: 'MyFont';
+    src: url('./LOTSOFDOTZ.TTF');
+  }
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 20px;
+}
+a{
+    text-decoration: none;
+}
+.container{
+    background-image: url(./img/villes.PNG);
+    background-size: cover;
+    width: 70%;
+    height: 90vh;
+    background-color: #c4c4c2a2;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10px;
+}
+.rimod{
+    background-image: url(./img/texture.PNG);
+    background-size: cover;
+    width: fit-content;
+    height: fit-content;
+    padding: 30px;
+    border-radius: 22px;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    background-color: #A4A4A6;
+}
+.scren{
+    width: 291px;
+    height: 150px;
+    padding: 15px;
+    background-color: rgb(2, 3, 37);
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    border-radius:12px;
+
+    
+}
+.n_tage{
+    display: flex;
+    justify-content: center;
+}
+.n_tage span{
+    color: rgb(72, 255, 0);
+    font-size: 12px;
+    font-family: MyFont;
+}
+.Fleche{
+    display: flex;
+    margin-top: auto !important;
+    justify-content: center;
+    padding: 4px;
+}
+.Fleche i{
+    color: rgba(208, 255, 0, 0.945);
+    animation: mymove 2s infinite;
+}
+@keyframes mymove {
+    from {margin-left: 0px;}
+    to {margin-left: 40px;}
+  }
+.info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+.info .steps{
+    color: red;
+    font-size: 15px;
+    font-family: "MyFont";
+}
+.info .étage{
+    color: rgb(0, 255, 21);
+    font-size: 15px;
+    font-family: "MyFont";
+}
+.control{
+    width: 291px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.button_de_tage{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.button_de_tage a{
+    background-image: url(./img/Button-PNG-Photos.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 0px 19px rgb(134, 134, 134);
+    border-radius:25px; 
+}
+.button_de_tage a:hover{
+    transform: scale(1.02);
+}
+.button_control{
+    display: flex;
+    justify-content: space-around;
+}
+.button_control a{
+    background-image: url(./img/pngwing.com-removebg-preview.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 130px;
+    height: 50px;
+}
+.button_control a:hover{
+    transform: scale(1.02);
+}
+
+
+.reset{
+    color: red;
+}
+
+/* les_tag */
+
+.les_tag{
+    height: 100%;
+    width: 150px;
+    border: 5px solid #969696;
+    background-color: #aaaaa9ab;
+    font-family: Arial, Helvetica, sans-serif;
+    color: whitesmoke;
+    font-size: 30px;
+}
+.les_tag:last-child{
+    border-bottom:none ;
+}
+.les_tag div{
+
+
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom:5px solid #969696;
+}
+.porte{
+    height: 17.5% !important;
+    display: flex;
+    justify-content: space-between !important;
+    position: relative;
+    bottom: 20%;
+    background-image: url(./img/1.png);
+    background-size:cover ;
+    
+    margin: 8px;
+    margin-bottom: 0px;  
+    
+}
+.portgauche{
+    background-color: #e4dfdfe0;
+     border-bottom: none !important;   
+    height: 100% !important;
+    width: 10%;
+    animation-name: ovrer;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+    margin-right: 3px;
+
+
+}
+.portdroit{
+    background-color: #e4dfdfe0;
+    border-bottom: none !important;
+    height: 100% !important;
+    width: 10%;
+    animation-name: ovrer;
+    animation-duration: 10s;
+    animation-fill-mode: forwards;
+}
+.aw{
+    background-image: url(./img/etage1.PNG);
+    background-size: cover;
+}
+
+.button_de_tage a.selected {
+    border: 1px solid rgb(0, 255, 21);
+}
