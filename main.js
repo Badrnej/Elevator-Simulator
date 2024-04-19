@@ -1,3 +1,4 @@
+
 // main.js
 let temps = 2;
 let debut = 20;
@@ -8,6 +9,7 @@ let current_floor = 0; // Assume the elevator starts at ground floor
 let porte = document.querySelector(".porte");
 let style = document.querySelector('style');
 document.head.appendChild(style);
+
 
 function Mouvement_ascenseur_top(fin) {
     porte.style.animation = `Mouvement ${temps}s ease-in-out forwards`;
@@ -40,6 +42,8 @@ closeDoor.onclick = function () {
     Porte_Fermer();
 }
 
+
+
 let les_tage = [];
 let les_tage_bottom = [];
 let nombre_tage = document.querySelector(".n_tage span");
@@ -57,21 +61,21 @@ buttons.forEach((button, index) => {
         }
 
         button.style.cssText = "border: 1px solid rgb(0, 255, 21);";
-        nombre_tage.textContent += " R" + (index);
+        nombre_tage.textContent += " R" + index;
 
         const targetArray = index > position ? les_tage : les_tage_bottom;
         const tempsArray = index > position ? [2, 3, 5, 6] : [6, 5, 3, 2];
         const positionArray = [0, 1, 2, 3];
 
-        targetArray.push(20 * (index));
+        targetArray.push(20 * (index + 1));
         temps = tempsArray[positionArray.indexOf(index)];
         position = index;
 
-        console.log("Floor: " + (position));
+        console.log(position);
     });
 });
 
-// Effacer les chiffres à l'écran
+
 let reset = document.querySelector(".reset");
 reset.onclick = function () {
     nombre_tage.textContent = "";
@@ -79,9 +83,11 @@ reset.onclick = function () {
         buttons[i].style.cssText = "border:none;";
     }
 
-    les_tage.length = 0;
-    les_tage_bottom.length = 0;
+    
+    les_tage = [0];
+    les_tage_bottom = [0]; 
 }
+
 
 //Un programme a commencé à fonctionner
 let Start = document.querySelector(".Start");
@@ -105,18 +111,22 @@ function deplacement() {
             mov_botm = true;
         }
 
+
+let totalSteps = 0; // Variable pour suivre le nombre total de pas
+
+        // Fonction pour déplacer l'ascenseur d'un étage
         function moveElevator() {
             if (les_tage.length > 0 && mov_botm == false) {
                 Porte_Fermer();
                 setTimeout(() => {
                     Mouvement_ascenseur_top(les_tage[0]);
-                    current_floor = les_tage[0]; // Update current floor
+                    totalSteps++; // Augmenter le nombre total de pas
+                    current_floor = les_tage[0]; // Mettre à jour l'étage actuel
                 }, 4000);
                 setTimeout(() => {
                     Porte_ouverte();
                     setTimeout(() => {
                         porte.style.bottom = `${debut}%`;
-                        console.log("Floor: " + (debut / 20));
                         style.innerText = "";
                         moveElevator();
                     }, 4000);
@@ -143,13 +153,14 @@ function deplacement() {
             }
         }
 
+// Fonction pour déplacer l'ascenseur vers le bas
         function moveElevator_buttom() {
             if (les_tage_bottom.length > 0 && mov_top == false) {
                 Porte_Fermer();
                 setTimeout(() => {
                     Mouvement_ascenseur_top(les_tage_bottom[0]);
-                    current_floor = les_tage_bottom[0]; // Update current floor
-                    console.log("Floor: " + (current_floor / 20));
+                    totalSteps++; // Augmenter le nombre total de pas
+                    current_floor = les_tage_bottom[0]; // Mettre à jour l'étage actuel
                 }, 4000);
                 setTimeout(() => {
                     Porte_ouverte();
@@ -182,6 +193,13 @@ function deplacement() {
         }
     }
 }
+
+// Fonction pour mettre à jour l'affichage du nombre de pas
+function updateTotalSteps() {
+    let totalStepsElement = document.getElementById("totalSteps");
+    totalStepsElement.textContent = totalSteps.toString();
+}
+
 
 Start.onclick = function () {
     t = true;
